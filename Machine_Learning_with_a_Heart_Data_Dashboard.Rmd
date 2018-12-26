@@ -2,7 +2,11 @@
 title: "Machine Learning with a Heart - Data Dashboard"
 author: "Thileepan Paulraj"
 date: "2018-12-26"
-output: flexdashboard::flex_dashboard
+#output: flexdashboard::flex_dashboard
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -21,5 +25,26 @@ heart = read.csv('heart_data.csv', stringsAsFactors = FALSE)
 ggplot(heart, aes(num_major_vessels)) + geom_bar()
 ```
 
+### Chest pain type
 
+```{r}
+ggplot(heart, aes(chest_pain_type)) + geom_bar()
+```
+
+### Cholesterol in blood
+
+```{r}
+ggplot(heart, aes(serum_cholesterol_mg_per_dl)) + geom_histogram(binwidth = 3)
+
+```
+
+## column 2
+
+```{r}
+heart %>%
+  arrange(age) %>%
+  head(10) %>%
+  select(age, sex, chest_pain_type) %>%
+  DT::datatable()
+```
 
