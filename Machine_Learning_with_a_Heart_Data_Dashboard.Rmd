@@ -1,0 +1,25 @@
+---
+title: "Machine Learning with a Heart - Data Dashboard"
+author: "Thileepan Paulraj"
+date: "2018-12-26"
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(fig.width = 5, fig.asp = 1/3)
+
+heart = read.csv('heart_data.csv', stringsAsFactors = FALSE)
+```
+
+## Column 1
+
+### Number of major blood vessels colored by fluroscopy
+
+```{r}
+ggplot(heart, aes(num_major_vessels)) + geom_bar()
+```
+
+
+
